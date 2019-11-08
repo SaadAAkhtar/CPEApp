@@ -50,8 +50,8 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.alcohol = alcohol[0];
-          p.allergy = allergy[0];
+          p.alcohol = getStringValue(alcohol[0]);
+          p.allergy = getStringValue(allergy[0]);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -115,6 +115,15 @@
         typeof ob.valueQuantity.value != 'undefined' &&
         typeof ob.valueQuantity.unit != 'undefined') {
           return ob.valueQuantity.value + ' ' + ob.valueQuantity.unit;
+    } else {
+      return undefined;
+    }
+  }
+  
+  function getStringValue(ob) {
+    if (typeof ob != 'undefined' &&
+        typeof ob.valueString != 'undefined' {
+          return ob.valueString;
     } else {
       return undefined;
     }
