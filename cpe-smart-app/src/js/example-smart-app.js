@@ -15,7 +15,7 @@
                     type: 'Observation',
                     query: {
                       code: {
-                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 'https://loinc.org|11331-6'
+                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
                       }
@@ -41,7 +41,6 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          var alcohol = byCodes('11331-6');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -49,7 +48,6 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.alcohol = alcohol;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -85,7 +83,6 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      alcohol: {value: ''},
     };
   }
 
@@ -129,7 +126,6 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#alcohol').html(p.alcohol);
   };
 
 })(window);
