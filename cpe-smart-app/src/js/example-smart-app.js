@@ -42,7 +42,10 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var alcohol = byCodes('11331-6');
+          console.log(alcohol);
+          console.log('XXXXX');
           var allergy = byCodes('82606-5');
+          console.log(allergy)
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
