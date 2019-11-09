@@ -122,7 +122,7 @@
   
   function getStringValue(ob) {
     if (typeof ob != 'undefined' &&
-        typeof ob.valueString != 'undefined' {
+        typeof ob.valueString != 'undefined') {
           return ob.valueString;
     } else {
       return undefined;
