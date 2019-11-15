@@ -15,8 +15,8 @@
                     type: 'Observation',
                     query: {
                       code: {
-                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 'http://loinc.org|11331-6', 
-                              'http://loinc.org|8480-6', 'http://loinc.org|2085-9', 'https://loinc.org|82606-5', 
+                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 
+                              'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
                       }
                     }
@@ -41,11 +41,6 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          var alcohol = byCodes('11331-6');
-          console.log(alcohol);
-          console.log('XXXXX');
-          var allergy = byCodes('82606-5');
-          console.log(allergy)
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -53,8 +48,6 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.alcohol = getStringValue(alcohol[0]);
-          p.allergy = getStringValue(allergy[0]);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -90,8 +83,6 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      alcohol: {value: ''},
-      allergy: {value: ''},
     };
   }
 
@@ -122,15 +113,6 @@
       return undefined;
     }
   }
-  
-  function getStringValue(ob) {
-    if (typeof ob != 'undefined' &&
-        typeof ob.valueString != 'undefined') {
-          return ob.valueString;
-    } else {
-      return undefined;
-    }
-  }
 
   window.drawVisualization = function(p) {
     $('#holder').show();
@@ -144,8 +126,6 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#alcohol').html(p.alcohol);
-    $('#allergy').html(p.allergy);
   };
 
 })(window);
