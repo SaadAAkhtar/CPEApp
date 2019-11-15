@@ -33,10 +33,10 @@
           console.log(patient.extension);
           console.log(patient.extension[0]);
           console.log(patient.extension[1]);
-          console.log(patient.extension[0].text);
-          console.log(patient.extension[1].text);
-          console.log(patient.extension[0].extension);
-          console.log(patient.extension[1].extension);
+          console.log(patient.extension[0].extension[4]);
+          console.log(patient.extension[1].extension[3]);
+          console.log(patient.extension[0].extension[4].valueString);
+          console.log(patient.extension[1].extension[3].valueString);
           console.log(byCodes('29463-7'));
           console.log(byCodes('2571-8'));
           console.log(byCodes('2093-3'));
