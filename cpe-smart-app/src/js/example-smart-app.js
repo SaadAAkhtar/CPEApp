@@ -28,7 +28,6 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var id = patient.id;
-          var married = patient.maritalStatus.text;
           console.log(byCodes('29463-7'));
           console.log(byCodes('2571-8'));
           console.log(byCodes('2093-3'));
@@ -38,6 +37,7 @@
           var address = '';
           var race = '';
           var ethnicity = '';
+          var married = '';
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
@@ -54,6 +54,10 @@
           
           if (typeof patient.extension !== 'undefined' && typeof patient.extension[1].extension !== 'undefined') {
             ethnicity = patient.extension[1].extension[3].valueString;
+          }
+          
+          if (typeof patient.maritalStatus !== 'undefined') {
+            married = patient.maritalStatus.text;
           }
 
           var height = byCodes('8302-2');
