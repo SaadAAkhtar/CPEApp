@@ -29,13 +29,6 @@
           var gender = patient.gender;
           var id = patient.id;
           var married = patient.maritalStatus.text;
-          console.log(patient.extension);
-          console.log(patient.extension[0]);
-          console.log(patient.extension[1]);
-          console.log(patient.extension[0].extension[4]);
-          console.log(patient.extension[1].extension[3]);
-          console.log(patient.extension[0].extension[4].valueString);
-          console.log(patient.extension[1].extension[3].valueString);
           console.log(byCodes('29463-7'));
           console.log(byCodes('2571-8'));
           console.log(byCodes('2093-3'));
@@ -43,6 +36,8 @@
           var fname = '';
           var lname = '';
           var address = '';
+          var race = '';
+          var ethnicity = '';
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
@@ -51,6 +46,14 @@
           
           if (typeof patient.address[0] !== 'undefined') {
             address = patient.address[0].text;
+          }
+          
+          if (typeof patient.extension[0] !== 'undefined' && typeof patient.extension[0].extension[4] !== 'undefined') {
+            race = patient.extension[0].extension[4].valueString;
+          }
+          
+          if (typeof patient.extension[1] !== 'undefined' && typeof patient.extension[1].extension[3] !== 'undefined') {
+            ethnicity = patient.extension[1].extension[3].valueString;
           }
 
           var height = byCodes('8302-2');
@@ -68,6 +71,8 @@
           p.id = id;
           p.married = married;
           p.address = address;
+          p.race = race;
+          p.ethnicity = ethnicity;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -106,6 +111,8 @@
       id: {value: ''},
       married: {value: ''},
       address: {value: ''},
+      race: {value: ''},
+      ethnicity: {value: ''},
     };
   }
 
@@ -152,6 +159,8 @@
     $('#id').html(p.id);
     $('#married').html(p.married);
     $('#address').html(p.address);
+    $('#race').html(p.race);
+    $('#ethnicity').html(p.ethnicity);
   };
 
 })(window);
