@@ -28,8 +28,8 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var id = patient.id;
-          console.log(patient.maritalStatus[0]);
-          console.log(patient.address[0]);
+          console.log(patient.maritalStatus.text);
+          console.log(patient.address-postalcode);
 
           var fname = '';
           var lname = '';
