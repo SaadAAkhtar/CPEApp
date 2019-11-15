@@ -15,9 +15,9 @@
                     type: 'Observation',
                     query: {
                       code: {
-                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 
-                              'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
+                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 'http://loinc.org|29463-7'
+                              'http://loinc.org|8480-6', 'http://loinc.org|2085-9', 'http://loinc.org|2571-8'
+                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 'http://loinc.org|2093-3']
                       }
                     }
                   });
@@ -31,8 +31,15 @@
           var married = patient.maritalStatus.text;
           var address = patient.address[0].text;
           console.log(patient.extension);
-          console.log(patient.extension[2]);
-          console.log(patient.extension[3]);
+          console.log(patient.extension[0]);
+          console.log(patient.extension[1]);
+          console.log(patient.extension[0].text);
+          console.log(patient.extension[1].text);
+          console.log(patient.extension[0].extension);
+          console.log(patient.extension[1].extension);
+          console.log(byCodes('29463-7'));
+          console.log(byCodes('2571-8'));
+          console.log(byCodes('2093-3'));
 
           var fname = '';
           var lname = '';
