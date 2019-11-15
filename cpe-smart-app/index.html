@@ -92,7 +92,7 @@
     <div id='medications'>
     <h1>Medications for <span id="name">Loading...</span></h1>
     <ul id="med_list">Loading...</ul>
-    <script type="text/javascript">
+    <script type="text/javascript" src="node_modules/fhirclient/fhir-client.js">
         var med_list = document.getElementById('med_list');
         function getPatientName(pt) {
             if (pt.name) {
