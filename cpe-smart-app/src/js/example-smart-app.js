@@ -44,15 +44,15 @@
             lname = patient.name[0].family.join(' ');
           }
           
-          if (typeof patient.address[0] !== 'undefined') {
+          if (typeof patient.address !== 'undefined') {
             address = patient.address[0].text;
           }
           
-          if (typeof patient.extension[0] !== 'undefined' && typeof patient.extension[0].extension[4] !== 'undefined') {
+          if (typeof patient.extension !== 'undefined' && typeof patient.extension[0].extension !== 'undefined') {
             race = patient.extension[0].extension[4].valueString;
           }
           
-          if (typeof patient.extension[1] !== 'undefined' && typeof patient.extension[1].extension[3] !== 'undefined') {
+          if (typeof patient.extension !== 'undefined' && typeof patient.extension[1].extension !== 'undefined') {
             ethnicity = patient.extension[1].extension[3].valueString;
           }
 
