@@ -30,6 +30,9 @@
           var id = patient.id;
           var married = patient.maritalStatus.text;
           var address = patient.address[0].text;
+          console.log(patient.extension);
+          console.log(patient.extension[2]);
+          console.log(patient.extension[3]);
 
           var fname = '';
           var lname = '';
