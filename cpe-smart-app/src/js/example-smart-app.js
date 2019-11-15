@@ -29,7 +29,6 @@
           var gender = patient.gender;
           var id = patient.id;
           var married = patient.maritalStatus.text;
-          var address = patient.address[0].text;
           console.log(patient.extension);
           console.log(patient.extension[0]);
           console.log(patient.extension[1]);
@@ -43,10 +42,15 @@
 
           var fname = '';
           var lname = '';
+          var address = '';
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
+          }
+          
+          if (typeof patient.address[0] !== 'undefined') {
+            address = patient.address[0].text;
           }
 
           var height = byCodes('8302-2');
