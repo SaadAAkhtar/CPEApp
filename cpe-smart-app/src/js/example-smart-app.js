@@ -44,19 +44,19 @@
           }
           
           if (typeof patient.address !== 'undefined') {
-            address = patient.address[0].text.join(' ');
+            address = patient.address[0].text;
           }
           
-          if (typeof patient.extension !== 'undefined' && typeof patient.extension[0].extension !== 'undefined') {
-            race = patient.extension[0].extension[4].valueString.join(' ');
+          if (typeof patient.extension !== 'undefined' && typeof patient.extension[0] !== 'undefined' && typeof patient.extension[0].extension !== 'undefined' && typeof patient.extension[0].extension[4] !== 'undefined') {
+            race = patient.extension[0].extension[4].valueString;
           }
           
-          if (typeof patient.extension !== 'undefined' && typeof patient.extension[1].extension !== 'undefined') {
-            ethnicity = patient.extension[1].extension[3].valueString.join(' ');
+          if (typeof patient.extension !== 'undefined' && typeof patient.extension[1] !== 'undefined' && typeof patient.extension[1].extension !== 'undefined' && typeof patient.extension[1].extension[3] !== 'undefined') {
+            ethnicity = patient.extension[1].extension[3].valueString;
           }
           
           if (typeof patient.maritalStatus !== 'undefined') {
-            married = patient.maritalStatus.text.join(' ');
+            married = patient.maritalStatus.text;
           }
 
           var height = byCodes('8302-2');
