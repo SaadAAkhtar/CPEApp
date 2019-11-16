@@ -44,19 +44,19 @@
           }
           
           if (typeof patient.address !== 'undefined') {
-            address = patient.address[0].text;
+            address = patient.address[0].text.join(' ');
           }
           
-          if (typeof patient.extension[0].extension[4].valueString !== 'undefined' || patient.extension[0].extension[4].valueString !== null) {
-            race = patient.extension[0].extension[4].valueString;
+          if (typeof patient.extension !== 'undefined' && typeof patient.extension[0].extension !== 'undefined') {
+            race = patient.extension[0].extension[4].valueString.join(' ');
           }
           
-          if (typeof patient.extension[1].extension[3].valueString !== 'undefined' || patient.extension[1].extension[3].valueString !== null) {
-            ethnicity = patient.extension[1].extension[3].valueString;
+          if (typeof patient.extension !== 'undefined' && typeof patient.extension[1].extension !== 'undefined') {
+            ethnicity = patient.extension[1].extension[3].valueString.join(' ');
           }
           
           if (typeof patient.maritalStatus !== 'undefined') {
-            married = patient.maritalStatus.text;
+            married = patient.maritalStatus.text.join(' ');
           }
 
           var height = byCodes('8302-2');
