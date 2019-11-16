@@ -28,7 +28,6 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var id = patient.id;
-          console.log(byCodes('29463-7'));
           console.log(byCodes('2571-8'));
           console.log(byCodes('2093-3'));
 
@@ -48,11 +47,11 @@
             address = patient.address[0].text;
           }
           
-          if (typeof patient.extension !== 'undefined' && typeof patient.extension[0].extension !== 'undefined') {
+          if (typeof patient.extension[0].extension[4].valueString !== 'undefined' || patient.extension[0].extension[4].valueString !== null) {
             race = patient.extension[0].extension[4].valueString;
           }
           
-          if (typeof patient.extension !== 'undefined' && typeof patient.extension[1].extension !== 'undefined') {
+          if (typeof patient.extension[1].extension[3].valueString !== 'undefined' || patient.extension[1].extension[3].valueString !== null) {
             ethnicity = patient.extension[1].extension[3].valueString;
           }
           
@@ -65,6 +64,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
+          var weight = byCodes('29463-7');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -77,6 +77,7 @@
           p.address = address;
           p.race = race;
           p.ethnicity = ethnicity;
+          p.weight = getQuantityValueAndUnit(weight[0]);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -117,6 +118,7 @@
       address: {value: ''},
       race: {value: ''},
       ethnicity: {value: ''},
+      weight: {value: ''},
     };
   }
 
@@ -165,6 +167,7 @@
     $('#address').html(p.address);
     $('#race').html(p.race);
     $('#ethnicity').html(p.ethnicity);
+    $('#weight').html(p.weight);
   };
 
 })(window);
