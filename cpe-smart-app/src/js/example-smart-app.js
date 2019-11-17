@@ -10,7 +10,7 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         
-        var meds = [];
+        var meds = '';
         
         //Queries
         var patient = smart.patient;
@@ -27,19 +27,18 @@
         
         $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
           console.log(medicationOrder);
-          var p = defaultPatient();
+          var medss = [];
           var len = medicationOrder.length;
           
           for (i = 0; i < len; i++) {
             var temp = medicationOrder[i].medicationCodeableConcept.text;
             
-            if (meds.indexOf(temp) === -1) {
-              meds.push(temp);
+            if (medss.indexOf(temp) === -1) {
+              medss.push(temp);
+              meds = temp + "\n";
             }
           }
         });
-        
-        console.log(meds);
         
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -109,7 +108,8 @@
           }
           
           //Prepare variables for index.html
-          p.meds = meds.slice();
+          console.log(meds);
+          p.meds = meds;
           console.log(p.meds);
           p.birthdate = patient.birthDate;
           p.gender = gender;
@@ -170,7 +170,7 @@
       trig: {value: ''},
       providerName: {value: ''},
       providerRole: {value: ''},
-      meds: [],
+      meds: {value: ''},
     };
   }
 
