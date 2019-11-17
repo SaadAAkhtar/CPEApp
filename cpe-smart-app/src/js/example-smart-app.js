@@ -34,7 +34,7 @@
             
             if (medss.indexOf(temp) === -1) {
               medss.push(temp);
-              meds = temp + "\n";
+              meds = meds + temp + "\n";
             }
           }
           
