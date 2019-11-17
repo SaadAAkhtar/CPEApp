@@ -10,6 +10,8 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         
+        var meds = [];
+        
         //Queries
         var patient = smart.patient;
         var pt = patient.read();
@@ -22,10 +24,11 @@
               });
 
         $.when(pt, medicationOrder).fail(onError);
+        
         $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
           console.log(medicationOrder);
+          var p = defaultPatient();
           var len = medicationOrder.length;
-          var meds = [];
           
           for (i = 0; i < len; i++) {
             var temp = medicationOrder[i].medicationCodeableConcept.text;
@@ -34,9 +37,9 @@
               meds.push(temp);
             }
           }
-          
-          console.log(meds);
         });
+        
+        console.log(meds);
         
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -106,6 +109,7 @@
           }
           
           //Prepare variables for index.html
+          p.meds = meds;
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
@@ -165,6 +169,7 @@
       trig: {value: ''},
       providerName: {value: ''},
       providerRole: {value: ''},
+      meds: {value: ''},
     };
   }
 
@@ -218,6 +223,7 @@
     $('#trig').html(p.trig);
     $('#providerName').html(p.providerName);
     $('#providerRole').html(p.providerRole);
+    $('#meds').html(p.meds);
   };
 
 })(window);
