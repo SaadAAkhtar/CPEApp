@@ -24,8 +24,13 @@
                     }
                   });
         
-        var mobv = smart.patient.api.fetchAllWithReferences({type: "MedicationOrder"},["MedicationOrder.medicationReference"])
-        console.log(mobv);
+        var medicationOrder = smart.patient.api.fetchAll({
+          type: 'MedicationOrder',
+          query: {
+            _count: 4
+          }
+        });
+        console.log(medicationOrder);
         
         //Query Error Handling
         $.when(pt, obv).fail(onError);
