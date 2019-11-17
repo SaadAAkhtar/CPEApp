@@ -8,10 +8,7 @@
     }
 
     function onReady(smart)  {
-      if (smart.hasOwnProperty('patient')) {
-        
-        var meds = '';
-        
+      if (smart.hasOwnProperty('patient')) {    
         //Queries
         var patient = smart.patient;
         var pt = patient.read();
@@ -27,6 +24,8 @@
         
         $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
           console.log(medicationOrder);
+          var p = defaultPatient();
+          var meds = '';
           var medss = [];
           var len = medicationOrder.length;
           
@@ -38,6 +37,10 @@
               meds = temp + "\n";
             }
           }
+          
+          console.log(meds);
+          p.meds = meds;
+          console.log(p.meds);
         });
         
         var obv = smart.patient.api.fetchAll({
@@ -108,9 +111,6 @@
           }
           
           //Prepare variables for index.html
-          console.log(meds);
-          p.meds = meds;
-          console.log(p.meds);
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
