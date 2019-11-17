@@ -71,7 +71,7 @@
             
               if (medss.indexOf(temp) === -1) {
                 medss.push(temp);
-                meds = meds + temp + "\n";
+                meds = meds + temp + "<br />";
               }
             }
           }
