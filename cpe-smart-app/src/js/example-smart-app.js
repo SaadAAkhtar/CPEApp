@@ -25,8 +25,8 @@
                     }
                   });
         
-        smart.patient.read().then(function(smart.patient) {
-          displayPatient (smart.patient);
+        smart.patient.read().then(function(patient) {
+          displayPatient (patient);
         });
         
         smart.patient.api.fetchAllWithReferences({type: "MedicationOrder"},["MedicationOrder.medicationReference"]).then(function(results, refs) {
