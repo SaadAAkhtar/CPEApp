@@ -25,7 +25,7 @@
         
         var mobv = smart.patient.api.fetchAll({
                     type: 'MedicationOrder',
-                    patient: 'patient.id'
+                    patient: patient.id
                   });
         
         //Query Error Handling
@@ -39,8 +39,6 @@
           
           //Variable initilizations
           console.log(mobv);
-          console.log(patient.careProvider[0].display);
-          console.log(patient.careProvider[0].reference);
           
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -58,6 +56,8 @@
           var race = '';
           var ethnicity = '';
           var married = '';
+          var providerName = '';
+          var providerRole = '';
           
           //Variable initilization undefined check
           if (typeof patient.name[0] !== 'undefined') {
@@ -81,10 +81,10 @@
             married = patient.maritalStatus.text;
           }
           
-          //if (typeof patient.careProvider !== 'undefined') {
-          //  providerName = patient.careProvider.display;
-          //  providerRole = patient.careProvider.reference;
-          //}
+          if (typeof patient.careProvider !== 'undefined' && typeof patient.careProvider[0] !== 'undefined' ) {
+            providerName = patient.careProvider[0].display;
+            providerRole = patient.careProvider[0].reference;
+          }
           
           //Prepare variables for index.html
           p.birthdate = patient.birthDate;
@@ -102,6 +102,8 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.cholesterol = getQuantityValueAndUnit(cholesterol[0]);
           p.trig = getQuantityValueAndUnit(trig[0]);
+          p.providerName = providerName;
+          p.providerRole = providerRole;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -142,6 +144,8 @@
       weight: {value: ''},
       cholesterol: {value: ''},
       trig: {value: ''},
+      providerName: {value: ''},
+      providerRole: {value: ''},
     };
   }
 
@@ -193,6 +197,8 @@
     $('#weight').html(p.weight);
     $('#cholesterol').html(p.cholesterol);
     $('#trig').html(p.trig);
+    $('#providerName').html(p.providerName);
+    $('#providerRole').html(p.providerRole);
   };
 
 })(window);
