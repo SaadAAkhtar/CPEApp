@@ -71,9 +71,15 @@
             
               if (medss.indexOf(temp) === -1) {
                 medss.push(temp);
-                meds = meds + temp + "<br />";
               }
             }
+          }
+          
+          medss.sort();
+          var lenn = medss.length;
+          
+          for (i = 0; i < lenn; i++) {
+            meds = meds + medss[i] + "<br />";
           }
           
           if (typeof patient.name[0] !== 'undefined') {
