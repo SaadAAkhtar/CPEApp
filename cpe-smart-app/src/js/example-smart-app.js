@@ -23,6 +23,13 @@
                     }
                   });
         
+        var mobv = smart.patient.api.fetchAll({
+                    type: 'MedicationOrder',
+                    query: {
+                      id: patient.id
+                    }
+                  });
+        
         //Query Error Handling
         $.when(pt, obv).fail(onError);
 
@@ -33,7 +40,8 @@
           var p = defaultPatient();
           
           //Variable initilizations
-          console.log(obv);
+          console.log(mobv);
+          console.log(patient.careProvider);
           
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
