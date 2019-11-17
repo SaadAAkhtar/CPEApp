@@ -31,7 +31,7 @@
             var temp = medicationOrder[i].medicationCodeableConcept.text;
             
             if (meds.indexOf(temp) === -1) {
-              meds.push.(temp);
+              meds.push(temp);
             }
           }
           
