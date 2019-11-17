@@ -109,7 +109,7 @@
           }
           
           //Prepare variables for index.html
-          p.meds = meds;
+          p.meds = meds.slice();
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
