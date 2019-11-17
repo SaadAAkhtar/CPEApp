@@ -66,6 +66,8 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var weight = byCodes('29463-7');
+          var cholesterol = byCodes('2571-8');
+          var trig = byCodes('2093-3');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -90,6 +92,8 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
+          p.cholesterol = getQuantityValueAndUnit(cholesterol[0]);
+          p.trig = getQuantityValueAndUnit(trig[0]);
 
           ret.resolve(p);
         });
@@ -120,6 +124,8 @@
       race: {value: ''},
       ethnicity: {value: ''},
       weight: {value: ''},
+      cholesterol: {value: ''},
+      trig: {value: ''},
     };
   }
 
@@ -169,6 +175,8 @@
     $('#race').html(p.race);
     $('#ethnicity').html(p.ethnicity);
     $('#weight').html(p.weight);
+    $('#cholesterol').html(p.cholesterol);
+    $('#trig').html(p.trig);
   };
 
 })(window);
