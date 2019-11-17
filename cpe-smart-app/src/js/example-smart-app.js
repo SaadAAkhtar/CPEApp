@@ -24,11 +24,18 @@
         $.when(pt, medicationOrder).fail(onError);
         $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
           console.log(medicationOrder);
-          console.log(medicationOrder.length);
+          var len = medicationOrder.length;
+          var meds = [];
           
-          for (i = 0; i < 20; i++) {
-            console.log(medicationOrder[i].medicationCodeableConcept.text);
+          for (i = 0; i < len; i++) {
+            var temp = medicationOrder[i].medicationCodeableConcept.text;
+            
+            if (meds.indexOf(temp) === -1) {
+              meds.push.(temp);
+            }
           }
+          
+          console.log(meds);
         });
         
         var obv = smart.patient.api.fetchAll({
