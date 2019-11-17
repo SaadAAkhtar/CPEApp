@@ -13,6 +13,19 @@
         //Queries
         var patient = smart.patient;
         var pt = patient.read();
+        
+        var medicationOrder = smart.patient.api.fetchAll({
+                type: 'MedicationOrder',
+                query: {
+                  _count: 4
+                }
+              });
+
+        $.when(pt, medicationOrder).fail(onError);
+        $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
+           console.log(medicationOrder);
+        });
+        
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -24,18 +37,10 @@
                     }
                   });
         
-        var medicationOrder = smart.patient.api.fetchAll({
-          type: 'MedicationOrder',
-          query: {
-            _count: 4
-          }
-        });
-        console.log(medicationOrder);
-        
-        //Query Error Handling
+        //Observation Query Error Handling
         $.when(pt, obv).fail(onError);
 
-        //Query Success Handling
+        //Observation Query Success Handling
         $.when(pt, obv).done(function(patient, obv) {
           //Function streamline
           var byCodes = smart.byCodes(obv, 'code');
