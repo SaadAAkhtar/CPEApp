@@ -23,7 +23,11 @@
 
         $.when(pt, medicationOrder).fail(onError);
         $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
-           console.log(medicationOrder);
+          console.log(medicationOrder);
+          
+          for (i = 0; i < 20; i++) {
+            console.log(MedicationOrder[i].medicationCodeableConcept);
+          }
         });
         
         var obv = smart.patient.api.fetchAll({
