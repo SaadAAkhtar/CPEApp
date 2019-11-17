@@ -9,6 +9,7 @@
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+        //Queries
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
@@ -21,22 +22,37 @@
                       }
                     }
                   });
-
+        
+        //Query Error Handling
         $.when(pt, obv).fail(onError);
 
+        //Query Success Handling
         $.when(pt, obv).done(function(patient, obv) {
+          //Function streamline
           var byCodes = smart.byCodes(obv, 'code');
+          var p = defaultPatient();
+          
+          //Variable initilizations
+          console.log(obv);
+          
+          var height = byCodes('8302-2');
+          var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
+          var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
+          var hdl = byCodes('2085-9');
+          var ldl = byCodes('2089-1');
+          var weight = byCodes('29463-7');
+          var cholesterol = byCodes('2571-8');
+          var trig = byCodes('2093-3');
           var gender = patient.gender;
           var id = patient.id;
-          console.log(obv);
-
           var fname = '';
           var lname = '';
           var address = '';
           var race = '';
           var ethnicity = '';
           var married = '';
-
+          
+          //Variable initilization undefined check
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
@@ -57,17 +73,8 @@
           if (typeof patient.maritalStatus !== 'undefined') {
             married = patient.maritalStatus.text;
           }
-
-          var height = byCodes('8302-2');
-          var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
-          var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
-          var hdl = byCodes('2085-9');
-          var ldl = byCodes('2089-1');
-          var weight = byCodes('29463-7');
-          var cholesterol = byCodes('2571-8');
-          var trig = byCodes('2093-3');
-
-          var p = defaultPatient();
+          
+          //Prepare variables for index.html
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
@@ -79,6 +86,10 @@
           p.race = race;
           p.ethnicity = ethnicity;
           p.weight = getQuantityValueAndUnit(weight[0]);
+          p.hdl = getQuantityValueAndUnit(hdl[0]);
+          p.ldl = getQuantityValueAndUnit(ldl[0]);
+          p.cholesterol = getQuantityValueAndUnit(cholesterol[0]);
+          p.trig = getQuantityValueAndUnit(trig[0]);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -87,11 +98,6 @@
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
-
-          p.hdl = getQuantityValueAndUnit(hdl[0]);
-          p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.cholesterol = getQuantityValueAndUnit(cholesterol[0]);
-          p.trig = getQuantityValueAndUnit(trig[0]);
 
           ret.resolve(p);
         });
