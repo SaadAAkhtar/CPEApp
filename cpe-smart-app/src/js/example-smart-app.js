@@ -17,16 +17,17 @@
         var medicationOrder = smart.patient.api.fetchAll({
                 type: 'MedicationOrder',
                 query: {
-                  _count: 4
+                  _count: 5
                 }
               });
 
         $.when(pt, medicationOrder).fail(onError);
         $.when(pt, medicationOrder).done(function(patient, medicationOrder) {
           console.log(medicationOrder);
+          console.log(medicationOrder.length);
           
           for (i = 0; i < 20; i++) {
-            console.log(medicationOrder[i].medicationCodeableConcept);
+            console.log(medicationOrder[i].medicationCodeableConcept.text);
           }
         });
         
