@@ -26,7 +26,7 @@
           console.log(medicationOrder);
           
           for (i = 0; i < 20; i++) {
-            console.log(MedicationOrder[i].medicationCodeableConcept);
+            console.log(medicationOrder[i].medicationCodeableConcept);
           }
         });
         
