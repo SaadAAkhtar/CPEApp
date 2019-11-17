@@ -28,9 +28,7 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var id = patient.id;
-          console.log(byCodes('2571-8'));
-          console.log(byCodes('2093-3'));
-          console.log(patient.extension);
+          console.log(obv);
 
           var fname = '';
           var lname = '';
