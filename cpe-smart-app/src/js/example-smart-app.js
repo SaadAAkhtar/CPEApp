@@ -25,9 +25,6 @@
         
         var mobv = smart.patient.api.fetchAll({
                     type: 'MedicationOrder',
-                    query: {
-                      id: patient.id
-                    }
                   });
         
         //Query Error Handling
@@ -41,7 +38,8 @@
           
           //Variable initilizations
           console.log(mobv);
-          console.log(patient.careProvider);
+          console.log(patient.careProvider.display);
+          console.log(patient.careProvider.reference);
           
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -81,6 +79,11 @@
           if (typeof patient.maritalStatus !== 'undefined') {
             married = patient.maritalStatus.text;
           }
+          
+          //if (typeof patient.careProvider !== 'undefined') {
+          //  providerName = patient.careProvider.display;
+          //  providerRole = patient.careProvider.reference;
+          //}
           
           //Prepare variables for index.html
           p.birthdate = patient.birthDate;
