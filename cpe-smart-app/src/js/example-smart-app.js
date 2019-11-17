@@ -104,7 +104,6 @@
           
           //Prepare variables for index.html
           p.meds = meds;
-          console.log(p.meds);
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
