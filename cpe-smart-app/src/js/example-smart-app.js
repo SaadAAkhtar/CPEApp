@@ -25,7 +25,6 @@
         
         var mobv = smart.patient.api.fetchAll({
                     type: 'MedicationOrder',
-                    patient: patient.id
                   });
         
         //Query Error Handling
