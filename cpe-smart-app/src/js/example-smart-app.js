@@ -88,19 +88,19 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.height = getQuantityValueAndUnit(height[0]);
           p.id = id;
           p.married = married;
           p.address = address;
           p.race = race;
           p.ethnicity = ethnicity;
+          p.providerName = providerName;
+          p.providerRole = providerRole;
+          p.height = getQuantityValueAndUnit(height[0]);
           p.weight = getQuantityValueAndUnit(weight[0]);
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.cholesterol = getQuantityValueAndUnit(cholesterol[0]);
           p.trig = getQuantityValueAndUnit(trig[0]);
-          p.providerName = providerName;
-          p.providerRole = providerRole;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
