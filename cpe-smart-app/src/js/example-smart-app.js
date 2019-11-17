@@ -170,7 +170,7 @@
       trig: {value: ''},
       providerName: {value: ''},
       providerRole: {value: ''},
-      meds: {value: ''},
+      meds: [],
     };
   }
 
